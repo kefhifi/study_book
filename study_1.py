@@ -153,3 +153,9 @@ print("Here is the original list again:")
 print(cars)
 # ['bmw', 'audi', 'toyota', 'subaru']
 
+print(".............测试........................")
+cars = ['bmw', 'audi', 'toyota', 'subaru']
+print(cars)
+print(cars[0]+ "  " +cars[1]+"  "+ cars[3-1])
+
+

@@ -92,7 +92,51 @@ for name,info in users.items():
         print(key+" is "+value)
 
 # 这章的习题一定要做，多练习，否者过几天又忘记了。
-print("...............................6-7................................")
+print("...............................6-8................................")
+
+cats = {'location': 'beijing', 'master': 'kate'}
+dogs = {'location': 'shanghai', 'master': 'tom'}
+fish = {'location': 'shenzhen', 'master': 'lily'}
+pets = [cats, dogs, fish]
+for pet in pets:
+    for key, value in  pet.items():
+        print(key + ":  " + value + "         ", end='')
+    print("")
+
+print("...............................6-9................................")
+favorite_places = {
+    "jake": ["New York", "Chicago", "Boston"],
+    "brad": ["Miami", "Philadelphia", "San Francisco"],
+    "will": ["Los Angeles", "Las Vegas", "Seattle", "Washington"],
+}
+for name, places in favorite_places.items():
+    print(name.title() + " likes :    ",end="")
+    for place in places:
+        print(place.title(), end='')
+        if place == places[-1]:
+            print("")
+# 这个print语句默认换行
+#            print("\n")
+# 这个print语句还要再换一次行，相当于空了一行
+        else:
+            print(",     ", end='')
+# print 里面 end="" 为不换行
+
+print("...............................6-11................................")
+cities = {
+    'Paris' : {'Country': 'France', 'population': 67000000, 'fact': 'romantic'},
+    'London' : {'Country': 'England', 'population': 66490000, 'fact': 'luxury'},
+    'Amsterdam': {'Country': 'Holland', 'population': 17260000, 'fact': 'Football'},
+}
+# 字典最后一个键值对后面可以加逗号，也可以不加
+for city, summay in cities.items():
+    print(city,end='')
+    for key, value in summay.items():
+        print(key + " :  " + str(value) + "     ", end='')
+    print("")
+
+
+
 
 
 
