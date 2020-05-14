@@ -35,8 +35,129 @@ for line in lines:
 
 
 # 10.1.6 包含一百万位的大型文件
+# 索引访问字符串
+a="abcd1234"
+print(a[0:2]+"...")
+print(a[1])
+
+# 判断字符串是否在另外一个字符串里面
+string="abcdefghijklmnopq"
+test_str="efg"
+if test_str in string:
+    print("in")
+else:
+    print("no in")
+
+print(".....................10-1.........................")
+file_name="learning_python.txt"
+with open(file_name,mode='r',encoding='utf-8-sig') as file_obj:
+    # 全部读取
+    contents=file_obj.read()
+    print("1st:")
+    print(contents)
+with open(file_name, mode='r', encoding='utf-8-sig') as file_obj:
+    print("2nd:")
+    # 遍历
+    for li in file_obj:
+        print(li.rstrip())
+with open(file_name, mode='r', encoding='utf-8-sig') as file_obj:
+    print("3rd:")
+    lines=file_obj.readlines()
+for lin in lines:
+    print(lin,end="")
+
+print(".....................10-2.........................")
+file_name="learning_python.txt"
+with open(file_name,mode='r',encoding='utf-8-sig') as file_obj:
+    # 全部读取
+    contents=file_obj.read()
+new_contents=contents.replace("Python","C")
+print(new_contents)
+
+# 10.2.1 写入空文件
+filename = 'programming.txt'
+with open(filename, 'w') as file_object:
+    file_object.write("I love programming.")
+# 打开文件时，可指定读取模式（'r'）、写入模式（'w'）、附加模式（'a'）或让你能够读取和写入文件的模式（'r+'）。
+# 如果你省略了模式实参，Python将以默认的只读模式打开文件。
+# 如果你要写入的文件不存在，函数open()将自动创建它。然而，以写入（'w'）模式打开文件时千万要小心，
+# 因为如果指定的文件已经存在，Python将在返回文件对象前清空该文件。
+# 注意　Python只能将字符串写入文本文件。要将数值数据存储到文本文件中，必须先使用函数str()将其转换为字符串格式。
+
+print(".....................10-3.........................")
 
 
+print(".....................10-4.........................")
+
+
+print(".....................10-5.........................")
+
+# 10.3 异常
+# 异常是使用try-except代码块处理的。try-except代码块让Python执行指定的操作，同时告诉Python发生异常时怎么办。
+# 使用了try-except代码块时，即便出现异常，程序也将继续运行：显示你编写的友好的错误消息，而不是令用户迷惑的traceback。
+
+# 10.3.4 else 代码块
+try:
+    answer = int(first_number) / int(second_number)
+except ZeroDivisionError:
+    print("You can't divide by 0!")
+else:
+    print(answer)
+# try-except-else代码块的工作原理大致如下：Python尝试执行try代码块中的代码；只有可能引发异常的代码才需要放在try语句中。
+# 有时候，有一些仅在try代码块成功执行时才需要运行的代码；这些代码应放在else代码块中。except代码块告诉Python，
+# 如果它尝试运行try代码块中的代码时引发了指定的异常，该怎么办。
+
+# 10.3.5 处理FileNotFoundError异常
+
+# 10.3.6 分析文本
+
+# 10.3.7 使用多个文件
+
+# 10.3.8 失败时一声不吭
+# 要让程序在失败时一声不吭，可像通常那样编写try代码块，但在except代码块中明确地告诉Python什么都不要做。
+# Python有一个pass语句，可在代码块中使用它来让Python什么都不要做。
+# pass语句还充当了占位符，它提醒你在程序的某个地方什么都没有做，并且以后也许要在这里做些什么。例如，在这个程序中，
+# 我们可能决定将找不到的文件的名称写入到文件missing_files.txt中。用户看不到这个文件，但我们可以读取这个文件，进而处理所有文件找不到的问题。
+
+# 10.3.9 决定报告哪些错误
+
+
+print(".....................10-6.........................")
+
+
+print(".....................10-7.........................")
+
+
+print(".....................10-8.........................")
+
+
+print(".....................10-9.........................")
+
+
+print(".....................10-10.........................")
+
+
+# 10.4 存储数据
+
+# 10.4.1 使用json.dump()和json.load()
+
+import json
+numbers = [2, 3, 5, 7, 11, 13]
+filename = 'numbers.json'
+with open(filename, 'w') as f_obj:
+    json.dump(numbers, f_obj)
+# 我们先导入模块json，再创建一个数字列表。在❶处，我们指定了要将该数字列表存储到其中的文件的名称。
+# 通常使用文件扩展名.json来指出文件存储的数据为JSON格式。接下来，我们以写入模式打开这个文件，让json能够将数据写入其中。
+# 在处，我们使用函数json.dump()将数字列表存储到文件numbers.json中。
+
+import json
+filename = 'numbers.json'
+with open(filename) as f_obj:
+    numbers = json.load(f_obj)
+print(numbers)
+# ，我们使用函数json.load()加载存储在numbers.json中的信息，并将其存储到变量numbers中
+
+# 10.4.2 保存和读取用户生成的数据
 
 
 

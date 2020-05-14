@@ -146,25 +146,117 @@ print(my_tesla.get_descriptive_name())
 # 9.3.6 模拟实物
 
 print("..........................9-6................................")
+from restaurant import Restaurant
 
+class IceCreamStand(Restaurant):
+    def __init__(self,restaurant_name,cuisine_type):
+        super().__init__(restaurant_name,cuisine_type)
+        self.flavors=["sweet","salt","Spicy"]
+    def view_ice(self):
+        print(self.restaurant_name + ":" +self.cuisine_type+":  " ,end="")
+        print(self.flavors)
 
-
-
+my_ice=IceCreamStand("big","japan")
+my_ice.view_ice()
 
 print("..........................9-7................................")
-
-
-
+class Admin(User):
+    def __init__(self, first, last, age, place):
+        super().__init__(first, last, age, place)
+        self.privileges=["can add post","can delete post","can ban user"]
+    def show_privileges(self):
+        print("Privileges:  ",end="")
+        for priv in self.privileges:
+            print(priv+",   ",end="")
+our_admin=Admin("tom","cruise",18,"USA")
+our_admin.show_privileges()
 
 
 print("..........................9-8................................")
 
-
+class Privileges():
+    def __init__(self):
+        self.privileges=["can add post","can delete post","can ban user"]
+    def show_privileges(self):
+        print("Privileges:  ",end="")
+        for priv in self.privileges:
+            print(priv+",   ",end="")
+class Admin(User):
+    def __init__(self, first, last, age, place):
+        super().__init__(first, last, age, place)
+        self.priv=Privileges()
+our_admin=Admin("tom","cruise",18,"USA")
+our_admin.priv.show_privileges()
 
 print("..........................9-9................................")
 
 
 
+
+
+
+
+
 # 9.4 导入类
+
+
+
+
+
+
+#9.4.4 导入整个模块
+# 你还可以导入整个模块，再使用句点表示法访问需要的类。这种导入方法很简单，代码也易于阅读。由于创建类实例的代码都包含模块名，
+# 因此不会与当前文件使用的任何名称发生冲突。
+import car
+my_beetle = car.Car('volkswagen', 'beetle', 2016)
+# 我们使用语法module_name.class_name访问需要的类
+
+# 9.4.5 导入模块中的所有类
+from module_name import *
+# 不推荐使用这种导入方式，其原因有二。首先，如果只要看一下文件开头的import语句，就能清楚地知道程序使用了哪些类，将大有裨益；
+# 但这种导入方式没有明确地指出你使用了模块中的哪些类。这种导入方式还可能引发名称方面的困惑。如果你不小心导入了一个与程序文件中其他东西同名的类，
+# 将引发难以诊断的错误。这里之所以介绍这种导入方式，是因为虽然不推荐使用这种方式，但你可能会在别人编写的代码中见到它。
+# 需要从一个模块中导入很多类时，最好导入整个模块，并使用module_name.class_name语法来访问类。这样做时，虽然文件开头并没有列出用到的所有类，
+# 但你清楚地知道在程序的哪些地方使用了导入的模块；你还避免了导入模块中的每个类可能引发的名称冲突。
+
+print(".......................9-10..........................")
+
+
+print(".......................9-11..........................")
+
+
+print(".......................9-12..........................")
+
+
+
+print(".......................9-13..........................")
+
+
+print(".......................9-14..........................")
+
+
+print(".......................9-15..........................")
+
+
+# 9.6 类编码风格
+# 类名应采用驼峰命名法，即将类名中的每个单词的首字母都大写，而不使用下划线。实例名和模块名都采用小写格式，并在单词之间加上下划线。
+# 可使用空行来组织代码，但不要滥用。在类中，可使用一个空行来分隔方法；而在模块中，可使用两个空行来分隔类。
+# 需要同时导入标准库中的模块和你编写的模块时，先编写导入标准库模块的import语句，再添加一个空行，然后编写导入你自己编写的模块的import语句。
+# 在包含多条import语句的程序中，这种做法让人更容易明白程序使用的各个模块都来自何方。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
