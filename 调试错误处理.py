@@ -23,9 +23,9 @@ class TestEmployee(unittest.TestCase):
         self.my_emp.give_raise(10000)
         self.assertEqual(self.my_emp.salary,self.sal)
 
-上面代码运行出现错误信息：
-TypeError: test_give_default_raise() takes 0 positional arguments but 1 was given
+# 上面代码运行出现错误信息：
+# TypeError: test_give_default_raise() takes 0 positional arguments but 1 was given
 
-解决：
-test_give_default_raise() 方法括号里面加上参数self
+# 解决：
+# test_give_default_raise() 方法括号里面加上参数self
 
