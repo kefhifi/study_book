@@ -42,3 +42,4 @@ for x in L3:
     if x not in L4:
         L4.append(x)
 print(L4) #[1, 2, 3, 4, 5, 6]
+

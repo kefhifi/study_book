@@ -28,4 +28,3 @@ class TestEmployee(unittest.TestCase):
 
 # 解决：
 # test_give_default_raise() 方法括号里面加上参数self
-
