@@ -91,6 +91,28 @@ for name,info in users.items():
     for key,value in info.items():
         print(key+" is "+value)
 
+print("..........................6-3.......................")
+dic_table={"for":"loop_1","while":"loop_2","in":"loop_in ","with":"open file use","as":"to be"}
+for key,value in dic_table.items():
+    print(key + ": " + value)
+
+for key,value in dic_table.items():
+    print(key+"\n")
+    print("\t" + value)
+
+print("..........................6-4.......................")
+dic_table={"for":"loop_1","while":"loop_2","in":"loop_in ","with":"open file use","as":"to be"}
+dic_table["if"]="assume"
+dic_table["else"]="another aspect"
+dic_table["class"]="define class"
+dic_table["def"]="define"
+dic_table["and"]="2 condition"
+for key,value in dic_table.items():
+    print(key + ": " + value)
+
+
+
+
 # 这章的习题一定要做，多练习，否者过几天又忘记了。
 print("...............................6-8................................")
 

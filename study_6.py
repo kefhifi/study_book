@@ -230,9 +230,58 @@ print(".......................9-12..........................")
 
 
 print(".......................9-13..........................")
+from collections import OrderedDict
+dic_table=OrderedDict()
+dic_table["for"]="loop_1"
+dic_table["while"]="loop_2"
+dic_table["in"]="loop_in"
+dic_table["with"]="open file use"
+dic_table["as"]="to be"
+dic_table["if"]="assume"
+dic_table["else"]="another aspect"
+dic_table["class"]="define class"
+dic_table["def"]="define"
+dic_table["and"]="loop_1"
+for key,value in dic_table.items():
+    print(key + ": " + value)
 
 
-print(".......................9-14..........................")
+print(".........................9-14. 默认值 法一 ............................")
+from random import randint
+class Die():
+    def __init__(self,sides=6):
+        self.sides=sides
+    def roll_die(self):
+        print(randint(1,self.sides))
+the_die=Die()
+the_die.roll_die()
+the_die=Die(10)
+the_die.roll_die()
+the_die=Die(20)
+the_die.roll_die()
+
+print(".........................9-14. 默认值 法二 ............................")
+from random import randint
+from random import randint
+class Die():
+    def __init__(self):
+        self.sides=6
+    def roll_die(self):
+        print(randint(1,self.sides))
+    def set_sides(self,sides):
+        self.sides=sides
+the_die=Die()
+print("........6面......")
+i=0
+while i<10:
+    the_die.roll_die()
+    i+=1
+print("........10面......")
+the_die.set_sides(10)
+the_die.roll_die()
+print("........20面......")
+the_die.set_sides(20)
+the_die.roll_die()
 
 
 print(".......................9-15..........................")
