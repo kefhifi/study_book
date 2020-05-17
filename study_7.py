@@ -57,7 +57,7 @@ with open(file_name,mode='r',encoding='utf-8-sig') as file_obj:
     print(contents)
 with open(file_name, mode='r', encoding='utf-8-sig') as file_obj:
     print("2nd:")
-    # 遍历
+    # 遍历     要以每次一行的方式检查文件，可对文件对象使用for循环
     for li in file_obj:
         print(li.rstrip())
 with open(file_name, mode='r', encoding='utf-8-sig') as file_obj:
@@ -158,6 +158,154 @@ print(numbers)
 # ，我们使用函数json.load()加载存储在numbers.json中的信息，并将其存储到变量numbers中
 
 # 10.4.2 保存和读取用户生成的数据
+import json
+namefile="username.json"
+try:
+    with open(namefile,"r",encoding="utf-8-sig") as file_obj:
+        username = json.load(file_obj)
+except FileNotFoundError:
+    with open(namefile,"w",encoding="utf-8-sig") as file_obj:
+        username=input("what is your name? ")
+        json.dump(username,file_obj)
+    with open(namefile,"r",encoding="utf-8-sig") as file_obj:
+        username = json.load(file_obj)
+        print("hello!", end="")
+        print(username)
+else:
+    print("hello!",end="")
+    print(username)
+
+# 10.4.3 重构
+
+
+print(".....................10-11.........................")
+
+
+print(".....................10-12.........................")
+
+
+print(".....................10-13.........................")
+
+
+print(".....................10-14.........................")
+
+
+# 11.1 测试函数
+
+# 11.1.1 单元测试和测试用例
+
+# 我们使用了unittest类最有用的功能之一：一个断言方法。断言方法用来核实得到的结果是否与期望的结果一致。
+
+
+
+#我们将这个方法命名为test_first_last_middle_name()。方法名必须以test_打头，这样它才会在我们运行test_name_function.py时自动运行。
+# 这个方法名清楚地指出了它测试的是get_formatted_name()的哪个行为，这样，如果该测试未通过，我们就会马上知道受影响的是哪种类型的姓名。
+# 在TestCase类中使用很长的方法名是可以的；这些方法的名称必须是描述性的，这才能让你明白测试未通过时的输出；
+# 这些方法由Python自动调用，你根本不用编写调用它们的代码。
+
+
+
+print(".....................11-1.........................")
+city_function.py
+def city_country(city,country):
+    return (city + " " + country).title()
+
+test_cities.py
+import unittest
+from city_function import city_country
+class CityTestCase(unittest.TestCase):
+    def test_city_country(self):
+        self.assertEqual(city_country("santiago","chile"),"Santiago Chile")
+
+
+
+print(".....................11-2.........................")
+city_function.py
+def city_country(city,country,population=""):
+    if population:
+        return (city + " " + country).title()+ " - " + "population " + population
+    else:
+        return (city + " " + country).title()
+
+def city_country_1(city,country,population=0):
+    if population:
+        return (city + " " + country).title()+ " - " + "population " + str(population)
+    else:
+        return (city + " " + country).title()
+
+test_cities.py
+import unittest
+from city_function import city_country,city_country_1
+class CityTestCase(unittest.TestCase):
+    def test_city_country(self):
+        self.assertEqual(city_country("santiago","chile"),"Santiago Chile")
+    def test_city_country_1(self):
+        self.assertEqual(city_country_1("santiago","chile"),"Santiago Chile")
+    def test_city_country_population(self):
+        self.assertEqual(city_country("santiago", "chile", "5000000"), "Santiago Chile - population 5000000")
+    def test_city_country_population_1(self):
+        self.assertEqual(city_country_1("santiago", "chile", 5000000), "Santiago Chile - population 5000000")
+
+# 11.2 测试类
+# 11.2.1 各种断言方法
+# 表11-1描述了6个常用的断言方法。使用这些方法可核实返回的值等于或不等于预期的值、返回的值为True或False、返回的值在列表中或不在列表中。
+# 你只能在继承unittest.TestCase的类中使用这些方法。
+
+# 11.2.2 一个要测试的类
+# 方法	                  用途
+# assertEqual(a,b)	    核实a == b
+# assertNotEqual(a,b)	    核实a != b
+# assertTrue(x)	        核实x为True
+# assertFalse(x)	        核实x为False
+# assertIn(item,list)	    核实item在list中
+# assertNotIn(item,list)	核实item不在list中
+
+
+# 11.2.4 方法setUp()
+# 在前面的test_survey.py中，我们在每个测试方法中都创建了一个AnonymousSurvey实例，并在每个方法中都创建了答案。
+# unittest.TestCase类包含方法setUp()，让我们只需创建这些对象一次，并在每个测试方法中使用它们。
+# 如果你在TestCase类中包含了方法setUp()，Python将先运行它，再运行各个以test_打头的方法。
+# 这样，在你编写的每个测试方法中都可使用在方法setUp()中创建的对象了。
+
+# 测试自己编写的类时，方法setUp()让测试方法编写起来更容易：可在setUp()方法中创建一系列实例并设置它们的属性，
+# 再在测试方法中直接使用这些实例。相比于在每个测试方法中都创建实例并设置其属性，这要容易得多。
+
+# 注意　运行测试用例时，每完成一个单元测试，Python都打印一个字符：测试通过时打印一个句点；
+# 测试引发错误时打印一个E；测试导致断言失败时打印一个F。这就是你运行测试用例时，在输出的第一行中看到的句点和字符数量各不相同的原因。
+# 如果测试用例包含很多单元测试，需要运行很长时间，就可通过观察这些结果来获悉有多少个测试通过了。
+
+print(".....................11-3.........................")
+class Employee():
+    def __init__(self,first,last,salary):
+        self.first=first
+        self.last=last
+        self.salary=salary
+    def give_raise(self,incre=5000):
+        self.salary=self.salary+incre
+
+import unittest
+class TestEmployee(unittest.TestCase):
+    def setUp(self):
+        self.my_emp=Employee("jak","lee",100000)
+        self.fi="jak"
+        self.la="lee"
+        self.sa=105000
+        self.sal=110000
+
+    def test_give_default_raise(self):
+        self.my_emp.give_raise()
+        self.assertEqual(self.my_emp.salary,self.sa)
+
+    def test_give_custom_raise(self):
+        self.my_emp.give_raise(10000)
+        self.assertEqual(self.my_emp.salary,self.sal)
+
+
+
+
+
+
+
 
 
 
